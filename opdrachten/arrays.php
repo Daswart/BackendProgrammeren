@@ -59,4 +59,63 @@ array_unshift($producten, "TV's", "Stereo's");
 echo "Tv's en Stereo's toegevoegd: ";
 print_r($producten);
 
+//Opgave 16
+echo "<br>---- Opgave 16: ";
+$random_keys =  array_rand($producten, 3);
+echo "<br>Eerste random product:". $producten[$random_keys[0]];
+echo "<br>Tweede random product:". $producten[$random_keys[1]]; 
+
+//Opgave 17
+function printArray($item, $key){
+      echo "<br>$key" . ": " . "<i>$item</i>";  
+}
+echo "<br>---- Opgave 17: Producten array doorlopen: ";
+array_walk($producten, 'printArray');
+
+//Opgave 18
+$getallen = ["nul", "een", "twee", "drie", "vier", "vijf"];
+$tools = ["boek", "pen", "laptop", "potlood"];
+$tekst1 = implode("*", $getallen);
+echo "<br>---- Opgave 18: Array getallen in tekst1 converteren: $tekst1";
+$tekst2 = implode("|", $tools);
+echo "<br>---- Opgave 18: Array tools in tekst2 converteren: $tekst2";
+
+//Opgave 19
+echo "<br>---- Opgave 19; Tekst1 in array1 converten:";
+$array1 = explode("*", $tekst1);
+array_walk($array1, 'printArray');
+echo "<br>---- Opgave 19; Tekst2 in array2 converten:";
+$array2 = explode("|", $tekst2);
+array_walk($array2, 'printArray');
+
+//Opgave 20
+$boeken = array(
+    array("titel" => "Stoner", "auteur" => "John Williams", 
+    "genre" => "Fictie", "prijs" => 19.99),
+    array("titel" => "De cirkel", "auteur" => "Dave Eggers", 
+    "genre" => "Fictie", "prijs" => 22.50),
+    array("titel" => "Rayuela", "auteur" => "Julio Cortazar", 
+    "genre" => "Fictie", "prijs" => 25.50)
+);
+echo "<br>---- Opgave 20: Boeken-array aangemaakt";
+
+//Opgave 21
+echo "<br>---- Opgave 21: Boeken recursief doorlopen:";
+array_walk_recursive($boeken, "printArray"); 
+
+//Opgave 22
+$nieuweboeken = array(
+    array("titel" => "Spijt", "auteur" => "Carry Slee", 
+    "genre" => "Fictie", "prijs" => 12.99),
+    array("titel" => "Debet", "auteur" => "Saskia Noort", 
+    "genre" => "Fictie", "prijs" => 33.50)
+);
+echo "<br>---- Opgave 22: Twee arrys samenvoegen: ";
+$boeken = array_merge($boeken, $nieuweboeken);
+array_walk_recursive($boeken, "printArray");
+
+//Opgave 23
+echo "<br>---- Opgave 23:Array-elementen kopiëren";
+$oudeboeken = array_slice($boeken, 0, 2);
+array_walk_recursive($oudeboeken, 'printArray'); 
 ?>
