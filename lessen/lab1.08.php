@@ -20,7 +20,8 @@
 </head>
 <body>
     <h3>Inschrijfformulier</h3>
-    <table>
+    <form action="lab1.08.verwerken.php" method="post">
+         <table>
         <tr>
             <td>Achternaam</td>
             <td><input type="text" name="achternaam"></td>
@@ -48,15 +49,21 @@
                 </select>
             </td>
         </tr>
+        <tr>
+            <td>E-mailadres</td>
+            <td><input type="email" name="email"></td>
+        </tr>
     </table>
     <br>
     Kies een opleiding:<br>
-    <input type="radio" name="opleiding" value="ict">ICT<br>
-    <input type="radio" name="opleiding" value="engels">Engels<br>
-    <input type="radio" name="opleiding" value="techniek">Techniek<br>
-    <input type="radio" name="opleiding" value="nederlands">Nederlands<br><br>
+    <input type="radio" name="opleiding" value="ICT">ICT<br>
+    <input type="radio" name="opleiding" value="Engels">Engels<br>
+    <input type="radio" name="opleiding" value="Techniek">Techniek<br>
+    <input type="radio" name="opleiding" value="Nederlands">Nederlands<br><br>
     <input type="submit" name="submit" value="Versturen">
     <input type="reset" value="Reset">
+    </form>
+   
 
 </body>
 </html>
