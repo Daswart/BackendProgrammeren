@@ -25,4 +25,68 @@ function serviceKosten($betalingswijze){
     }
 }
 
+//Lab 1.15 stap 1
+    function facturing(){
+        
+        echo
+        "<hr><h3>Factuur</h3> 
+        <table>
+        <tr>
+        <th>Genre</th>
+        <th>Artiest</th>
+        <th>Album</th>
+        <th>Aantal</th>
+        <th>Prijs</th>
+        <th>Bedrag</th>
+        </tr>";
+
+        $bedrag = 0;
+        $totaal = 0;
+        for($x=0; $x < sizeof($_POST['albumcode']); $x++){
+            if($_POST['aantal'][$x] > 0){
+            $bedrag = $_POST['prijs'][$x] * $_POST['aantal'][$x];
+            $totaal += $bedrag; 
+            echo   "<tr>
+             <td>" . $_POST['genre'][$x] ."</td>
+             <td>" . $_POST['artiest'][$x] ."</td>
+             <td>" . $_POST['album'][$x] ."</td>
+             <td>" . $_POST['aantal'][$x] ."</td>
+             <td>" . $_POST['prijs'][$x] ."</td>
+             <td>" . sprintf("%.2f", $bedrag)."</td>
+             </tr>";
+             
+            }
+            
+        }
+        
+    echo "<tr>
+    <td colspan='5'>Totaal</td>
+    <td>".sprintf("%.2f", $totaal)."</td>
+    </tr>";        
+    
+    $korting = 0;
+    if(isset($_POST['student'])) $korting = $totaal * 0.15;  
+    if(isset($_POST['klant'])) $korting = $totaal * 0.10;
+    
+    
+    echo "<tr>
+    <td colspan='5'>Korting</td>
+    <td>".sprintf("%.2f", $korting)."</td>
+    </tr>";
+    
+    $servicekosten = serviceKosten($_POST['betalingswijze']);
+    echo "<tr>
+    <td colspan='5'>Servicekosten</td>
+    <td>".sprintf("%.2f", $servicekosten)."</td>
+    </tr>";
+
+    $totaal += $servicekosten - $korting; 
+    echo "<tr>
+    <td colspan='5'>Te betalen</td>
+    <td>".sprintf("%.2f", $totaal)."</td>
+    </tr>";
+    
+    echo "</table>";
+    }
+
 ?>
