@@ -93,5 +93,16 @@ function serviceKosten($betalingswijze){
     
     echo "</table>";
     }
-
+ 
+//Lab 1.16: foreach_lus 
+$totaalaantal = 0;
+function premium(){
+    foreach($_POST['aantal'] as $aantal){
+    global $totaalaantal;
+    $totaalaantal += $aantal;    
+    }
+    if($totaalaantal > 5){
+        echo "<br>Word lid van onze premium club.";
+}  
+}
 ?>
