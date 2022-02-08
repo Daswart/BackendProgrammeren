@@ -38,5 +38,13 @@ $datum = date_create('2000-01-01');
 echo "<br>Datum formatteren: " . date_format($datum, "Y-m-d");
 echo "<br>Datum formatteren:  " . date_format($datum, "d-m-Y");
 
+//Opgave 61
+//Date_diff
+$factuurdatum = date_create("2018-10-10");
+echo "<br>Factuurdatum: " . date_format($factuurdatum, "Y-m-d");
+$vandaag = date_create('now');
+echo "<br>Vandaag: " . date_format($vandaag, "Y-m-d");
+$interval = date_diff($vandaag, $factuurdatum);
+echo "<br>U heef nog " . $interval->format("%R%a dagen om the betalen"); 
 
 ?>
