@@ -22,7 +22,7 @@ $gegevens = explode("*", $gegevens);
                 <img src="uploads/profile_icon.jpg" alt="">
             </div>
             <div class="container">
-              <h3>18-2-2022</h3>
+              <h3>'.$gegevens[2].'</h3>
               <h1>'.$gegevens[0].'</h1><p><br>'.
               $gegevens[1].'<p></div></div>';
  }
