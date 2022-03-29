@@ -15,11 +15,15 @@ if(isset($_POST['submit'])){
     // print_r($userInput);
     // echo "</pre>";
     // echo $text;
-       
+    $datum = new DateTime();
+    $datum = $datum->format('j F Y');  
     $bestand = fopen('blog.txt', 'ab');
-    $profiel = $naam . "*" . $text . "\n";
+    $profiel = $naam . "*" . $text . "*" . $datum . "\n";
     fwrite($bestand, $profiel, strlen($profiel));
     
 
 }
+ 
+
+
 ?>
